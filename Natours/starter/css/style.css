@@ -6,19 +6,27 @@ Medium green: #55c57a
 Dark green: #28b485
 
 */
-* {
+
+*,
+*::after,
+*::before {     /* GLOBAL CSS RESET */
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: inherit;
+}
+
+html {
+    font-size: 62.5%;  /* root font size = 1rem, 10/16px */
 }
 
 body {
     font-family: "Lato", sans-serif;
     font-weight: 400;
-    font-size: 16px;
+    /* font-size: 16px; */
     line-height: 1.7;
     color: #777;
-    padding: 30px;
+    padding: 3rem;
+    box-sizing: border-box;
 }
 
 .header {
@@ -35,21 +43,21 @@ body {
     position: relative;  /* use for absolute position of the logo */
 }
 
-.logo-box {  /* parent is 'header' */
+.header__logo-box {  /* parent is 'header' */
     position: absolute;
-    top: 40px; /* reference is in the parent - header */
-    left: 40px;
+    top: 4rem; /* reference is in the parent - header */
+    left: 4rem;
 }
 
-.logo {
-    height: 35px;
+.header__logo {
+    height: 3.5rem;
 }
 
-.logo:hover {
+.header__logo:hover {
     animation: moveInRight 2s ease-out; /* can reuse animation on hover events */
 }
 
-.text-box {
+.header__text-box {
     position: absolute;
     top: 40%;
     left: 50%;
@@ -63,25 +71,25 @@ body {
     text-transform: uppercase;
 
     backface-visibility: hidden; /* use here to fix animation shake */ 
-    margin-bottom: 60px;
+    margin-bottom: 6rem;
 }
 
-.heading-primary-main {
+.heading-primary--main {
     display: block;
-    font-size: 60px;
+    font-size: 6rem;
     font-weight: 400;
-    letter-spacing: 35px;
+    letter-spacing: 3.5rem;
 
     animation-name: moveInLeft;
     animation-duration: 2s;
     animation-timing-function: ease-out;
 }
 
-.heading-primary-sub {
+.heading-primary--sub {
     display: block;
-    font-size: 20px;
+    font-size: 2rem;
     font-weight: 700;
-    letter-spacing: 17.4px;
+    letter-spacing: 1.7rem;
 
     animation: moveInRight 2s ease-out;
 }
@@ -134,30 +142,30 @@ body {
 .btn:visited {
     text-transform: uppercase;
     text-decoration: none;
-    padding: 15px, 20px;
+    padding: 1.5rem, 2rem;
     display: inline-block;
-    border-radius: 100px;
+    border-radius: 10rem;
     transition: all .2s;
     position: relative; /* used as ref for ::after pseudo position below */
     animation: moveInBottom 2s ease-out;
-    font-size: 16px;
+    font-size: 1.6rem;  /* 16px with html font 10px */
     
 }
 
 .btn:hover {
     transform: translateY(-3px); /* goes up on hover */
-    box-shadow: 1px 2px rgba(0,0,0,.2); /* subtle shadow */
+    box-shadow: 1rem 2rem rgba(0,0,0,.2); /* subtle shadow */
 }
 
 .btn:active {
     transform: translateY(-1px); /* goes down, related to initial link state*/
-    box-shadow: 0 5px 10px rgba(0,0,0,.2);
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.2);
 }
 
-.btn-white {
+.btn--white {
     background-color: #fff;
     color: #777;
-    padding: 15px 20px;
+    padding: 1.5rem 2rem;
 }
 
 .btn::after {
@@ -165,7 +173,7 @@ body {
     display: inline-block;  /* because button is inline */
     height: 100%;
     width: 100%;
-    border-radius: 100px;
+    border-radius: 10rem;
     position: absolute;
     top: 0;
     left: 0;
@@ -173,7 +181,7 @@ body {
     transition: all .4s; /* initial state of the transition - before hover */
 }
 
-.btn-white::after {
+.btn--white::after {
     background-color: #fff;
 }
 
@@ -182,7 +190,7 @@ body {
     opacity: 0; /* does a fade out from white */
 }
 
-.btn-animated {
+.btn--animated {
     animation: moveInBottom 1.25s ease-out .75s;
     /* do fading backwards so fades in as refresh/open the page */
     animation-fill-mode: backwards;
