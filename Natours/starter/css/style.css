@@ -45,6 +45,10 @@ body {
     height: 35px;
 }
 
+.logo:hover {
+    animation: moveInRight 2s ease-out; /* can reuse animation on hover events */
+}
+
 .text-box {
     position: absolute;
     top: 40%;
@@ -67,6 +71,10 @@ body {
     font-size: 60px;
     font-weight: 400;
     letter-spacing: 35px;
+
+    animation-name: moveInLeft;
+    animation-duration: 2s;
+    animation-timing-function: ease-out;
 }
 
 .heading-primary-sub {
@@ -75,27 +83,110 @@ body {
     font-weight: 700;
     letter-spacing: 17.4px;
 
-
+    animation: moveInRight 2s ease-out;
 }
 
+@keyframes moveInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-10rem);
+    }
+
+    80% {
+        transform: translateX(1rem);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes moveInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(10rem);
+    }
+
+    80% {
+        transform: translateX(-1rem);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes moveInBottom {  /* used for button so fades in like h1 text */
+    0% {
+        opacity: 0;
+        transform: translateY(3rem);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
 
 .btn:link,
 .btn:visited {
     text-transform: uppercase;
     text-decoration: none;
-    padding: 15px 40px;
+    padding: 15px, 20px;
     display: inline-block;
     border-radius: 100px;
-    transition: all .2s; 
+    transition: all .2s;
+    position: relative; /* used as ref for ::after pseudo position below */
+    animation: moveInBottom 2s ease-out;
+    font-size: 16px;
+    
+}
+
+.btn:hover {
+    transform: translateY(-3px); /* goes up on hover */
+    box-shadow: 1px 2px rgba(0,0,0,.2); /* subtle shadow */
+}
+
+.btn:active {
+    transform: translateY(-1px); /* goes down, related to initial link state*/
+    box-shadow: 0 5px 10px rgba(0,0,0,.2);
 }
 
 .btn-white {
     background-color: #fff;
     color: #777;
-    padding: 15px 40px;
+    padding: 15px 20px;
 }
 
+.btn::after {
+    content: "";
+    display: inline-block;  /* because button is inline */
+    height: 100%;
+    width: 100%;
+    border-radius: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1; /* hide pseudo button BEHIND the button */
+    transition: all .4s; /* initial state of the transition - before hover */
+}
 
+.btn-white::after {
+    background-color: #fff;
+}
+
+.btn:hover::after {  /* pseudo element grows when hover over the btn */
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0; /* does a fade out from white */
+}
+
+.btn-animated {
+    animation: moveInBottom 1.25s ease-out .75s;
+    /* do fading backwards so fades in as refresh/open the page */
+    animation-fill-mode: backwards;
+}
 
 
 
