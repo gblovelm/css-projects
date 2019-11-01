@@ -6,6 +6,83 @@ Medium green: #55c57a
 Dark green: #28b485
 
 */
+*,
+*::after,
+*::before {
+  /* GLOBAL CSS RESET */
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; }
+
+html {
+  font-size: 62.5%;
+  /* root font size = 1rem, 10/16px */ }
+
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  /* font-size: 16px; */
+  line-height: 1.7;
+  color: #777;
+  padding: 3rem;
+  box-sizing: border-box; }
+
+.header {
+  height: 95vh;
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.6), rgba(40, 180, 133, 0.6)), url(../img/hero.jpg);
+  background-size: cover;
+  background-position: top;
+  clip-path: polygon(0 0, 100% 0%, 100% 75vh, 0 100%);
+  position: relative;
+  /* use for absolute position of the logo */ }
+  .header__logo-box {
+    /* parent is 'header' */
+    position: absolute;
+    top: 4rem;
+    /* reference is in the parent - header */
+    left: 4rem; }
+  .header__logo {
+    height: 3.5rem; }
+  .header__logo:hover {
+    animation: moveInRight 2s ease-out;
+    /* can reuse animation on hover events */ }
+  .header__text-box {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    /* background-color: coral; */
+    /* use this to see box boundary when adjusting position */ }
+
+.header__logo-box {
+  /* parent is 'header' */
+  position: absolute;
+  top: 4rem;
+  /* reference is in the parent - header */
+  left: 4rem; }
+
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+  backface-visibility: hidden;
+  /* use here to fix animation shake */
+  margin-bottom: 6rem; }
+  .heading-primary--main {
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem;
+    animation-name: moveInLeft;
+    animation-duration: 2s;
+    animation-timing-function: ease-out; }
+  .heading-primary--sub {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.7rem;
+    animation: moveInRight 2s ease-out; }
+
 @keyframes moveInLeft {
   0% {
     opacity: 0;
@@ -34,50 +111,6 @@ Dark green: #28b485
   100% {
     opacity: 1;
     transform: translate(0); } }
-
-*,
-*::after,
-*::before {
-  /* GLOBAL CSS RESET */
-  margin: 0;
-  padding: 0;
-  box-sizing: inherit; }
-
-html {
-  font-size: 62.5%;
-  /* root font size = 1rem, 10/16px */ }
-
-body {
-  box-sizing: border-box; }
-
-body {
-  font-family: "Lato", sans-serif;
-  font-weight: 400;
-  /* font-size: 16px; */
-  line-height: 1.7;
-  color: #777;
-  padding: 3rem; }
-
-.heading-primary {
-  color: #fff;
-  text-transform: uppercase;
-  backface-visibility: hidden;
-  /* use here to fix animation shake */
-  margin-bottom: 6rem; }
-  .heading-primary--main {
-    display: block;
-    font-size: 6rem;
-    font-weight: 400;
-    letter-spacing: 3.5rem;
-    animation-name: moveInLeft;
-    animation-duration: 2s;
-    animation-timing-function: ease-out; }
-  .heading-primary--sub {
-    display: block;
-    font-size: 2rem;
-    font-weight: 700;
-    letter-spacing: 1.7rem;
-    animation: moveInRight 2s ease-out; }
 
 .btn:link, .btn:visited {
   text-transform: uppercase;
@@ -134,31 +167,3 @@ body {
   animation: moveInBottom 1.25s ease-out .75s;
   /* do fading backwards so fades in as refresh/open the page */
   animation-fill-mode: backwards; }
-
-.header {
-  height: 95vh;
-  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.6), rgba(40, 180, 133, 0.6)), url(../img/hero.jpg);
-  background-size: cover;
-  background-position: top;
-  clip-path: polygon(0 0, 100% 0%, 100% 75vh, 0 100%);
-  position: relative;
-  /* use for absolute position of the logo */ }
-  .header__logo-box {
-    /* parent is 'header' */
-    position: absolute;
-    top: 4rem;
-    /* reference is in the parent - header */
-    left: 4rem; }
-  .header__logo {
-    height: 3.5rem; }
-  .header__logo:hover {
-    animation: moveInRight 2s ease-out;
-    /* can reuse animation on hover events */ }
-  .header__text-box {
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    /* background-color: coral; */
-    /* use this to see box boundary when adjusting position */ }

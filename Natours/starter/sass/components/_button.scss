@@ -1,0 +1,58 @@
+.btn {
+    &:link,
+    &:visited {
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 1.5rem, 2rem;
+        display: inline-block;
+        border-radius: 10rem;
+        transition: all .2s;
+        position: relative; /* used as ref for ::after pseudo position below */
+        animation: moveInBottom 2s ease-out;
+        font-size: 1.6rem;  /* 16px with html font 10px */   
+    }
+    
+    &:hover {
+        transform: translateY(-3px); /* goes up on hover */
+        box-shadow: 1rem 2rem rgba($color-black,.2); /* subtle shadow */
+
+        &::after {  /* pseudo element grows when hover over the btn */
+            transform: scaleX(1.4) scaleY(1.6);
+            opacity: 0; /* does a fade out from white */
+        }
+    }
+
+    &:active {
+        transform: translateY(-1px); /* goes down, related to initial link state*/
+        box-shadow: 0 .5rem 1rem rgba($color-black,.2);
+    }
+
+    &--white {
+        background-color: $color-white;
+        color: $color-grey-dark;
+        padding: 1.5rem 2rem;
+
+        &::after {
+            background-color: $color-white;
+        }
+    }
+
+    &::after {
+        content: "";
+        display: inline-block;  /* because button is inline */
+        height: 100%;
+        width: 100%;
+        border-radius: 10rem;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1; /* hide pseudo button BEHIND the button */
+        transition: all .4s; /* initial state of the transition - before hover */
+    }
+
+    &--animated {
+        animation: moveInBottom 1.25s ease-out .75s;
+        /* do fading backwards so fades in as refresh/open the page */
+        animation-fill-mode: backwards;
+    }
+}
