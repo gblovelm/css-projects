@@ -28,3 +28,9 @@
     margin-top: -15rem;  // close up space on RHS
 }
 
+.section-stories {
+    position: relative;  // for video positioning
+    padding: 15rem 0;
+    //background-color: $color-grey-light-1;  // replaced by video element
+}
+
