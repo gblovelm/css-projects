@@ -27,6 +27,8 @@
         background-image: radial-gradient($color-primary-light, $color-primary-dark);
         z-index: 1000;
         transition: transform .8s cubic-bezier(0.86, 0, 0.07, 1);
+
+        //transform: scale(80);
     }
 
     &__nav {
@@ -121,11 +123,11 @@
         &::after { top: .8rem; }
     }
 
-    &__button:hover &__icon::before { 
+    &__button:hover &__icon::before {
         top: -1rem;
     }
 
-    &__button:hover &__icon::after {  // sprread the 3 lines in the nav out when hovered
+    &__button:hover &__icon::after {  // spread the 3 lines in the nav out when hovered
         top: 1rem;
     }
 
